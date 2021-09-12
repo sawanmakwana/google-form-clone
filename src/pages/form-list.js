@@ -66,10 +66,7 @@ const FormList = () => {
                     {row.name}
                   </TableCell>
                   <TableCell align="right" style={{cursor: 'pointer'}}>
-                    <a
-                      href={`${process.env.REACT_APP_URL}/view/${row.id}`}
-                      target="_blank"
-                    >{`${process.env.REACT_APP_URL}/view/${row.id}`}</a>
+                    <Link to={`view/${row.id}`} target="_blank">{`${window.location.origin}/view/${row.id}`}</Link>
                   </TableCell>
                   <TableCell align="right">{moment(row.createdAt).format('DD MMM YYYY')}</TableCell>
                   <TableCell align="right">{row.totalResponse || 0}</TableCell>
