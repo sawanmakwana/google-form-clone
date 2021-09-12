@@ -12,3 +12,20 @@ export const createForm = data => {
 
   return dataToSet
 }
+
+export const saveResponse = data => {
+  const formList = JSON.parse(window.localStorage.getItem('forms') || '[]')
+  const selected = formList.findIndex(item => item.id === data.payload.id)
+  formList[selected].response = [...(formList[selected].response || []), data.payload.result]
+  window.localStorage.setItem('forms', JSON.stringify(formList))
+
+  return formList
+}
+
+export const deleteForm = data => {
+  const formList = JSON.parse(window.localStorage.getItem('forms') || '[]')
+  const updated = formList.filter(item => item.id !== data.payload)
+  window.localStorage.setItem('forms', JSON.stringify(updated))
+
+  return updated
+}
